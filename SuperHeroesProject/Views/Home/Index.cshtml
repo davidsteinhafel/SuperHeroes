@@ -5,6 +5,18 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <container><a href="~/css/jiren4k.jpg"></a></container>
+    <p> Meet our heroes!</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="hovereffect">
+                    <img class="img-fluid" src="~/css/jiren4k.jpg" alt="Jiren4k">
+                    <div class="overlay">
+                        <h2>Jiren</h2>
+                        <a class="info" asp-controller="SuperHeroes" asp-action="Index">Superhero List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
