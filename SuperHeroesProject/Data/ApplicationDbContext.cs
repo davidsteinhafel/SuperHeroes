@@ -7,13 +7,11 @@ using SuperHeroesProject.Models;
 
 namespace SuperHeroesProject.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext/*<ApplicationUser>*/
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            DbSet<Hero> heroes;
         }
-        public DbSet<SuperHeroesProject.Models.Hero> Heroes { get; set; }
+        public DbSet<Hero> Heroes { get; set; }
     }
 }

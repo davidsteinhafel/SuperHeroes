@@ -5,22 +5,23 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SuperHeroesProject.Data;
+using SuperHeroesProject.Models;
 
 namespace SuperHeroesProject.Controllers
 {
     public class SuperHeroesController : Controller
     {
-        private readonly ApplicationDbContext context;
-        public SuperHeroesController(ApplicationDbContext _context)
+        private readonly ApplicationDbContext _context;
+        public SuperHeroesController(ApplicationDbContext context)
         {
             _context = context;
         }
-        
-       
+
+
         // GET: SuperHeroes
         public ActionResult Index()
         {
-            return View();
+            return View(_context.Heroes);
         }
 
         // GET: SuperHeroes/Details/5
@@ -32,18 +33,23 @@ namespace SuperHeroesProject.Controllers
         // GET: SuperHeroes/Create
         public ActionResult Create()
         {
+            if (ModelState.IsValid)
+            {
+
+            }
+
             return View();
         }
 
         // POST: SuperHeroes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create([Bind("name, alterEgo, primeAbility, secondAbility, catchphrase")] Hero hero)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                _context.Heroes.Add(hero);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
