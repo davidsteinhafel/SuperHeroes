@@ -15,19 +15,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.name)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.alterEgo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.primeAbility)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.secondAbility)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.catchphrase)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -35,18 +22,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.alterEgo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.primeAbility)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.secondAbility)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.catchphrase)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

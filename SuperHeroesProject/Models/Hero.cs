@@ -15,6 +15,5 @@ namespace SuperHeroesProject.Models
         public string primeAbility { get; set; }
         public string secondAbility { get; set; }
         public string catchphrase { get; set; }
-
     }
 }

@@ -25,9 +25,10 @@ namespace SuperHeroesProject.Controllers
         }
 
         // GET: SuperHeroes/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int Id)
         {
-            return View();
+            var heroDetailsOnDb = _context.Heroes.FirstOrDefault(x => x.Id == Id);
+            return View(heroDetailsOnDb);
         }
 
         // GET: SuperHeroes/Create
@@ -54,7 +55,7 @@ namespace SuperHeroesProject.Controllers
             }
             catch
             {
-                return View();
+                return View(hero);
             }
         }
 
@@ -67,11 +68,11 @@ namespace SuperHeroesProject.Controllers
         // POST: SuperHeroes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Hero hero)
         {
             try
             {
-                // TODO: Add update logic here
+                
 
                 return RedirectToAction(nameof(Index));
             }
@@ -82,25 +83,25 @@ namespace SuperHeroesProject.Controllers
         }
 
         // GET: SuperHeroes/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+       
 
         // POST: SuperHeroes/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        [HttpGet]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Delete(int Id)
         {
             try
             {
-                // TODO: Add delete logic here
+                var deletHeroOnDb = _context.Heroes.FirstOrDefault(x => x.Id == Id);
+                _context.Remove(deletHeroOnDb);
+                _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
+
             }
             catch
             {
-                return View();
+                return RedirectToAction(nameof(Index));
             }
         }
     }
