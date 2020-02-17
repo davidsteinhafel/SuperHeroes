@@ -60,25 +60,28 @@ namespace SuperHeroesProject.Controllers
         }
 
         // GET: SuperHeroes/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int Id)
         {
-            return View();
+            var heroOnDb = _context.Heroes.Where(x => x.Id == Id).FirstOrDefault();
+            return View(heroOnDb);
         }
 
         // POST: SuperHeroes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Hero hero)
+        public ActionResult Edit(int Id, Hero hero)
         {
             try
             {
                 
+                _context.Heroes.Update(hero);
+                _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return RedirectToAction(nameof(Index));
             }
         }
 
